@@ -1,0 +1,30 @@
+{
+    "name": "unidavi/sistemaavaliacao",
+    "description": "Sistema de avaliação",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "DJonatan R. de Oliveira",
+            "email": "Djonatan.oliveira@unidavi.edu.br",
+            "role": "developer"
+        }
+    ],
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "autoload": {
+        "psr-4": {
+            "source\\": "source/"
+        }
+    },
+    "files": [
+        "source/boot/config.php",
+        "source/boot/helpers.php"
+    ],
+    "require": {
+        "php": "^8.0",
+        "ext-pdo": "^8.0",
+        "league/plates": "3.*",
+        "coffeecode/router": "2.0.*"
+    }
+}
