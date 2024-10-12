@@ -1,13 +1,13 @@
 <?php
 
 use App\Source\Core\Connect;
+use CoffeeCode\Router\Router;
 
 require __DIR__ . "/vendor/autoload.php";
 
-// echo"ola";
+$router = new Router(url(), ":");
 
-// $db = (new Connect())->getInstance();
+$router->namespace("/app/Source/Controller");
+$router->get("/", "Web:home");
 
-// var_dump($db);
-
-phpinfo();
+$router->dispatch();
