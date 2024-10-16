@@ -4,12 +4,17 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit06ba6fb2d85ca34cbaff3636b03a9543
+class ComposerStaticInitab1b1482ba2dbaf1edfbd21e3a908395
 {
+    public static $files = array (
+        'c10b9595395574ce91f6e81520e9a940' => __DIR__ . '/../..' . '/source/boot/config.php',
+        '3ca19a3aa7832c1dd96f756ed633aff7' => __DIR__ . '/../..' . '/source/boot/helpers.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
-        's' => 
+        'S' => 
         array (
-            'source\\' => 7,
+            'Source\\' => 7,
         ),
         'L' => 
         array (
@@ -22,9 +27,9 @@ class ComposerStaticInit06ba6fb2d85ca34cbaff3636b03a9543
     );
 
     public static $prefixDirsPsr4 = array (
-        'source\\' => 
+        'Source\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/source',
+            0 => __DIR__ . '/../..' . '/Source',
         ),
         'League\\Plates\\' => 
         array (
@@ -43,9 +48,9 @@ class ComposerStaticInit06ba6fb2d85ca34cbaff3636b03a9543
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit06ba6fb2d85ca34cbaff3636b03a9543::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit06ba6fb2d85ca34cbaff3636b03a9543::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit06ba6fb2d85ca34cbaff3636b03a9543::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitab1b1482ba2dbaf1edfbd21e3a908395::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitab1b1482ba2dbaf1edfbd21e3a908395::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitab1b1482ba2dbaf1edfbd21e3a908395::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1,13 +1,17 @@
 <?php
-
-use App\Source\Core\Connect;
-use CoffeeCode\Router\Router;
+ob_start();
 
 require __DIR__ . "/vendor/autoload.php";
 
+use CoffeeCode\Router\Router;
+
 $router = new Router(url(), ":");
 
-$router->namespace("/app/Source/Controller");
+$router->namespace("Source\Controller");
 $router->get("/", "Web:home");
+$router->get("/login", "Web:login");
+$router->get("/avaliacao", "Web:avaliacao");
 
 $router->dispatch();
+
+ob_end_flush();
