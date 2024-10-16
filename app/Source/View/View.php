@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Source\View;
+namespace Source\View;
 
 use League\Plates\Engine;
 

@@ -1,0 +1,15 @@
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.main-container {
+    text-align: center;
+}
+.btn-custom {
+    width: 250px;
+    margin: 10px;
+    font-size: 18px;
+}

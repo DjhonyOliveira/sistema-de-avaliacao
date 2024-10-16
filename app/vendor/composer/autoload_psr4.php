@@ -6,7 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'source\\' => array($baseDir . '/source'),
+    'Source\\' => array($baseDir . '/Source'),
     'League\\Plates\\' => array($vendorDir . '/league/plates/src'),
     'CoffeeCode\\Router\\' => array($vendorDir . '/coffeecode/router/src'),
 );

@@ -10,11 +10,11 @@ define("CONF_DB_USER", "postgres");
 
 /** Urls */
 
-define("CONF_URL_TEST","https://localhost/avaliacao");
+define("CONF_URL_TEST","https://localhost/");
 define("CONF_URL_BASE","https://meudominio.com.br");
 
 
-/** VIew */
+/** View */
 
 define("CONF_VIEW_PATH", __DIR__ . "/../View");
 define("CONF_VIEW_EXT", "php");

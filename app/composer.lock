@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06ba6fb2d85ca34cbaff3636b03a9543",
+    "content-hash": "ab1b1482ba2dbaf1edfbd21e3a908395",
     "packages": [
         {
             "name": "coffeecode/router",
@@ -57,16 +57,16 @@
         },
         {
             "name": "league/plates",
-            "version": "v3.5.0",
+            "version": "v3.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/plates.git",
-                "reference": "a6a3238e46c6e19af7318fdc36bfbe49b0620231"
+                "reference": "ec07462f53d38dd4a3323e288c41bffe86e9098e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/plates/zipball/a6a3238e46c6e19af7318fdc36bfbe49b0620231",
-                "reference": "a6a3238e46c6e19af7318fdc36bfbe49b0620231",
+                "url": "https://api.github.com/repos/thephpleague/plates/zipball/ec07462f53d38dd4a3323e288c41bffe86e9098e",
+                "reference": "ec07462f53d38dd4a3323e288c41bffe86e9098e",
                 "shasum": ""
             },
             "require": {
@@ -77,6 +77,7 @@
                 "phpunit/phpunit": "^9.5",
                 "squizlabs/php_codesniffer": "^3.5"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -115,21 +116,21 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/plates/issues",
-                "source": "https://github.com/thephpleague/plates/tree/v3.5.0"
+                "source": "https://github.com/thephpleague/plates/tree/v3"
             },
-            "time": "2023-01-16T20:25:45+00:00"
+            "time": "2023-01-19T12:24:09+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.0",
         "ext-pdo": "^8.0"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

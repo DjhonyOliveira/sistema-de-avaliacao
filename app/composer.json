@@ -1,10 +1,12 @@
 {
     "name": "unidavi/sistemaavaliacao",
+    "version": "1.0.0",
     "description": "Sistema de avaliação",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
+    "license": "MIT",
     "authors": [
         {
-            "name": "DJonatan R. de Oliveira",
+            "name": "Djonatan R. de Oliveira",
             "email": "Djonatan.oliveira@unidavi.edu.br",
             "role": "developer"
         }
@@ -14,13 +16,13 @@
     },
     "autoload": {
         "psr-4": {
-            "source\\": "source/"
-        }
+            "Source\\": "Source/"
+        },
+        "files": [
+            "source/boot/config.php",
+            "source/boot/helpers.php"
+        ]
     },
-    "files": [
-        "source/boot/config.php",
-        "source/boot/helpers.php"
-    ],
     "require": {
         "php": "^8.0",
         "ext-pdo": "^8.0",
