@@ -10,8 +10,8 @@
 <body>
     <div class="main-container">
         <h1 class="text-center mb-4">Bem-vindo ao Sistema Hospitalar</h1>
-        <a  class="btn btn-secondary btn-custom">Avaliar Serviços</a>
-        <a  class="btn btn-primary btn-custom">Login</a>
+        <a href="<?= url("/avaliacao")?>" class="btn btn-secondary btn-custom">Avaliar Serviços</a>
+        <a href="<?= url("/login") ?>" class="btn btn-primary btn-custom">Login</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
