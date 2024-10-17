@@ -20,4 +20,11 @@ class Web extends Controller {
     {
         echo $this->view->render("login", []);
     }
+
+    public function captaRespostas(): void
+    {
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            
+        }
+    }
 }

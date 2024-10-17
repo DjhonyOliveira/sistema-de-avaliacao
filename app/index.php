@@ -11,6 +11,7 @@ $router->namespace("Source\Controller");
 $router->get("/", "Web:home");
 $router->get("/login", "Web:login");
 $router->get("/avaliacao", "Web:avaliacao");
+$router->post("/avaliacao", "Web:captaRespostas");
 
 $router->dispatch();
 

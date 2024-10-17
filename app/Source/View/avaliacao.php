@@ -14,12 +14,12 @@
         <div id="question-container" class="text-center">
             <h3 id="question">Carregando pergunta...</h3>
             <div class="d-flex justify-content-center mt-4">
-                <!-- Botões de avaliação de 1 a 10 -->
                 <div id="rating-buttons">
-                    <!-- Botões gerados pelo JS -->
                 </div>
+                <div id="button-submit"></div>
             </div>
         </div>
+        <div id="response"></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -10,7 +10,7 @@ define("CONF_DB_USER", "postgres");
 
 /** Urls */
 
-define("CONF_URL_TEST","https://localhost/");
+define("CONF_URL_TEST","https://localhost/app");
 define("CONF_URL_BASE","https://meudominio.com.br");
 
 
