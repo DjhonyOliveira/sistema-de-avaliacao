@@ -1,95 +1,121 @@
-  // Simulação de perguntas vindas do backend
-const questions = [
-    {
-        id: 1,
-        pergunta: "Como você avalia o atendimento na recepção?"
-    },
-    {
-        id: 2,
-        pergunta: "Como você avalia o tempo de espera para ser atendido?"
-    },
-    {
-        id: 3,
-        pergunta :"Como você avalia a cordialidade dos médicos?"
-    },
-    {
-        id: 4,
-        pergunta: "Como você avalia a limpeza do hospital?"
+$(document).ready(function(){
+    buscaPerguntas();
+    
+    let tempoInatividade = 20000;
+    let tempoLimite;
+    let questions = [];
+    let avaliacao = {};
+    let currentQuestionIndex = 0;    
+
+    $(document).on('mousemove keypress scroll click', function() {
+        reiniciarTimer();
+    });
+
+    function recarregaPagina(){
+        location.reload();
+
+        if(avaliacao.length !== 0){
+            submitForm(avaliacao);
+        }
     }
-];
 
-let currentQuestionIndex = 0;
-
-let avaliacao = [];
-
-// Função para carregar a próxima pergunta
-function loadNextQuestion() {
-    const button = document.createElement('button');
-
-    if (currentQuestionIndex < questions.length) {
-        document.getElementById('question').textContent = questions[currentQuestionIndex]['pergunta'];
-        document.getElementById('question').value = questions[currentQuestionIndex]['id'];
-        document.getElementById('response').style.display = 'none';
-        document.getElementById('button-submit').style.display = 'none';
-    } else {
-        document.getElementById('question').textContent         = "Obrigado por completar a avaliação!";
-        document.getElementById('rating-buttons').style.display = 'none';
-        document.getElementById('button-submit').style.display  = 'block';
-
-        button.textContent = "Enviar Avaliacão";
-        button.className = "btn btn-primary";
-        button.type = "submit";
-        button.addEventListener('submit', () => submitForm());
-
-        document.getElementById('button-submit').appendChild(button);
+    function reiniciaTimer(){
+        clearTimeout(tempoLimite);
+        tempoLimite = setTimeout(recarregaPagina, tempoInatividade);
     }
-}
 
-function submitForm() {
-    fetch('/avaliacao', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(avaliacao)
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('response').innerHTML = "Avaliação enviada com sucesso!";
-        console.log(data);
-    })
-    .catch(error => console.error('Erro:', error));
-}
+    reiniciaTimer();
 
-// Inicializar botões de avaliação
-function initRatingButtons() {
-    const ratingButtonsContainer = document.getElementById('rating-buttons');
-    for (let i = 1; i <= 10; i++) {
+    function loadNextQuestion() {
         const button = document.createElement('button');
 
-        button.textContent = i;
-        button.className = 'rating-btn btn';
-        button.id = 'nota-' + i;
-        button.value = i;
-        button.dataset.rating = i;
-        button.addEventListener('click', (ev) => {
-            let idQuestion    = document.getElementById('question').value;
-            let notaAvaliacao = ev.target.value
+        if (currentQuestionIndex < questions.length) {
+            document.getElementById('question').textContent        = questions[currentQuestionIndex]['pergunta'];
+            document.getElementById('question').value              = questions[currentQuestionIndex]['id'];
+            document.getElementById('response').style.display      = 'none';
+            document.getElementById('button-submit').style.display = 'none';
+        } else {
+            document.getElementById('question').textContent         = "Obrigado por completar a avaliação!";
+            document.getElementById('rating-buttons').style.display = 'none';
+            document.getElementById('button-submit' ).style.display = 'block';
 
-            let resposta = {idQuestion, notaAvaliacao};
+            button.textContent = "Enviar Avaliacão";
+            button.className   = "btn btn-primary";
+            button.type        = "submit";
+            button.addEventListener('click', () => submitForm());
 
-            avaliacao.push(resposta);
-
-            currentQuestionIndex++;
-            loadNextQuestion();
-        });
-
-        ratingButtonsContainer.appendChild(button);
+            document.getElementById('button-submit').appendChild(button);
+        }
     }
-}
 
-// Inicializa a página
-window.onload = function() {
-    initRatingButtons();
-    loadNextQuestion();
-};
+    function submitForm() {
+        let url = window.location;
+
+        $.ajax({
+            url: url.origin + '/app/avaliacao', 
+            type: 'POST',
+            data: avaliacao,
+            dataType: 'json',
+            success: function(result){
+                $('#modalSucesso').modal('show');
+
+                setTimeout(function(){
+                    location.reload();
+                }, 2000);
+            },
+            error: function(){
+                alert('Deu Ruim aqui');
+            }
+        });
+    }
+
+    function buscaPerguntas(){
+        let url = window.location;
+
+        $.ajax({
+            url: url.origin + '/app/avaliacao' + url.search, 
+            type: 'GET',
+            dataType: 'json',
+            success: function(result){
+                questions = result;
+            },
+            error: function(error){
+                alert('Deu Ruim aqui');
+            }
+        });
+    }
+
+    function initRatingButtons() {
+        const ratingButtonsContainer = document.getElementById('rating-buttons');
+
+        for (let i = 1; i <= 10; i++) {
+            const button = document.createElement('button');
+
+            button.textContent    = i;
+            button.className      = 'rating-btn btn';
+            button.id             = 'nota-' + i;
+            button.value          = i;
+            button.dataset.rating = i;
+
+            button.addEventListener('click', (ev) => {
+                let idQuestion    = document.getElementById('question').value;
+                let notaAvaliacao = ev.target.value
+
+                let resposta = {idQuestion, notaAvaliacao};
+
+                avaliacao[`avaliacao${currentQuestionIndex}`] = resposta;
+
+                currentQuestionIndex++;
+                loadNextQuestion();
+            });
+
+            ratingButtonsContainer.appendChild(button);
+        }
+    }
+    
+    setTimeout(function(){
+        initRatingButtons();
+        loadNextQuestion();
+    }, 100);
+        
+});

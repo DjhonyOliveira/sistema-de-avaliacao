@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Source\Core;
+namespace Source\Core;
 
 class Connect
 {
 
     private const options = [
-        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+        \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
         \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ,
-        \PDO::ATTR_CASE => \PDO::CASE_NATURAL
+        \PDO::ATTR_CASE               => \PDO::CASE_NATURAL
     ];
 
     /** 
@@ -19,12 +19,12 @@ class Connect
     /**
      *  @return \PDO 
      */
-    public function getInstance(): \PDO
+    public static function getInstance(): \PDO
     {
         if(empty(self::$instance)){
             try{
                 self::$instance = new \PDO(
-                    "pgslq:host=" . CONF_DB_HOST . ";port=" . CONF_DB_PORT . ";dbname=" . CONF_DB_NAME,
+                    "pgsql:host=" . CONF_DB_HOST . ";port=" . CONF_DB_PORT . ";dbname=" . CONF_DB_NAME,
                     CONF_DB_USER,
                     CONF_DB_PASS,
                     self::options
@@ -33,7 +33,7 @@ class Connect
                 die('Erro ao conectar!!!');
             }
         }
-        echo'conectado';
+
         return self::$instance;
     }
 

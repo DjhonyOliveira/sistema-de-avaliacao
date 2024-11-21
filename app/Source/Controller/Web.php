@@ -3,28 +3,52 @@
 namespace Source\Controller;
 
 use Source\Controller\Controller;
+use Source\Model\Avaliacao;
+use Source\Model\Perguntas;
+use Source\Model\Setores;
 
 class Web extends Controller {
 
-    public function home(): void
+    public function avaliacao(): void
     {
-        echo $this->view->render("home", []);
+        if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            $this->getPerguntasByIdsetor();
+        } else {
+            $this->renderPageAvaliacao();
+        }
     }
 
-    public function avaliacao(): void
+    public function setores()
+    {
+        echo $this->view->render("home", [
+            "setores" => (new Setores())->getListaSetoresByPersistence()
+        ]);
+    }
+
+    private function getPerguntasByIdsetor(): void
+    {
+        if(!empty($_GET['setor'])){
+            $idSetor  = (int)  $_GET['setor'];
+            $aSetores = (new Perguntas())->getPerguntasByIdRelacionamento($idSetor);
+
+            echo json_encode($aSetores);
+        }
+    }
+
+    private function renderPageAvaliacao()
     {
         echo $this->view->render("avaliacao", []);
     }
 
-    public function login(): void
+    public function captaRespostas($request): void
     {
-        echo $this->view->render("login", []);
-    }
+        $bInserido = (new Avaliacao())->insereAvaliacao($request);
 
-    public function captaRespostas(): void
-    {
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            
+        if($bInserido){
+            echo true;
+        } else {
+            echo false;
         }
     }
+    
 }

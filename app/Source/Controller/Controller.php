@@ -2,6 +2,7 @@
 
 namespace Source\Controller;
 
+use Source\Core\Message;
 use Source\View\View;
 
 class Controller {
@@ -11,5 +12,6 @@ class Controller {
 
     public function __construct(){
         $this->view = new View();
+        $this->message = new Message();
     }
 }

@@ -19,8 +19,8 @@
             "Source\\": "Source/"
         },
         "files": [
-            "source/boot/config.php",
-            "source/boot/helpers.php"
+            "Source/boot/config.php",
+            "Source/boot/helpers.php"
         ]
     },
     "require": {
