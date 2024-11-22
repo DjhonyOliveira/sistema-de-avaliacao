@@ -6,7 +6,7 @@ class Usuario extends Model
 {
     public function __construct()
     {
-        parent::__construct("tbusuarios", ["usrid"], ["usr_name", "usremail", "usrpassword"]);
+        parent::__construct("tbusuarios", ["usrid"], ["usr_name", "usremail", "usrpassword", "strid"]);
     }
 
     public function findByEmail(string $email): ?Usuario
