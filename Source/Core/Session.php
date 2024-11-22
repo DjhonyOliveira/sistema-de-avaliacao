@@ -47,6 +47,12 @@ class Session
         return $this;
     }
 
+    public function unsetAll(): Session
+    {
+        session_unset();
+        return  $this;
+    }
+
     /**
      * @param string $key
      * @return bool

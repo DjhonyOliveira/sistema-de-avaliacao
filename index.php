@@ -18,5 +18,6 @@ $router->post("/avaliacao", "Web:captaRespostas");
 $router->get("/login", "App:login");
 $router->post("/login", "App:loginUser");
 $router->get("/admin", "App:admin");
+$router->post("/admin", "Admin:request");
 
 $router->dispatch();

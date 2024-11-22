@@ -1,0 +1,45 @@
+.main-container {
+    margin-top: 50px;
+}
+
+.metrics-box {
+    border: 1px solid #ddd;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.user-info {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.logout-btn {
+    margin-left: 20px;
+}
+
+p.nav-link {
+    cursor: pointer;
+}
+
+.hospital-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+}
+
+.empty-screen {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

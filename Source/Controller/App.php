@@ -24,7 +24,8 @@ class App extends Controller
             $idUser = $_SESSION['authUser'];
 
            echo $this->view->render("admin", [
-                "user" => (new Usuario())->findById("usrid", $idUser)
+                "user"      => (new Usuario())->findById("usrid", $idUser),
+                "nameAdmin" => 'Hospital Regional'
            ]);
         } else {
             redirect("/login");
@@ -65,6 +66,7 @@ class App extends Controller
             
         if(passVerify($pass, $user->usrpassword)){
             $session->set('authUser', $user->usrid);
+            $session->set('userSetor', $user->strid);
 
             $json['redirect'] = url("/admin");
 
