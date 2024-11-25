@@ -18,3 +18,19 @@
 .rating-btn[data-rating="9"], .rating-btn[data-rating="10"] {
     background-color: #2ecc71;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f8f9fa;
+}
+
+.avaliacao{
+    margin-top: 2em;
+}
+
+.json-response{
+    margin-top: 10em;
+}

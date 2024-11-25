@@ -43,3 +43,7 @@ p.nav-link {
     justify-content: center;
     align-items: center;
 }
+
+select {
+    height: 69%!important;
+}

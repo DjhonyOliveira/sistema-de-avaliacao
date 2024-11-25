@@ -76,11 +76,15 @@ $(document).ready(function(){
             url: url.origin + '/app/avaliacao' + url.search, 
             type: 'GET',
             dataType: 'json',
-            success: function(result){
-                questions = result;
-            },
-            error: function(error){
-                alert('Deu Ruim aqui');
+            success: function(response){
+                questions = response;
+
+                if(response.message){
+                    let message = $('.json-response');
+                    $('.avaliacao').css('display', 'none');
+
+                    message.html(response.message);
+                }
             }
         });
     }
