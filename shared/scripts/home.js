@@ -5,6 +5,10 @@ $(document).ready(function(){
 
         if(setor){
             window.location.href = `avaliacao?setor=${setor}`
+        } else {
+            let message = $('.mensagem');
+
+            message.html("<div class=\"message warning icon-warning\">Selecione um setor para continuar</div>").fadeIn(100)
         }
     })
 });

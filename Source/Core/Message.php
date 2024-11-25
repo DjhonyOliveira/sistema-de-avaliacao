@@ -87,22 +87,6 @@ class Message
     }
 
     /**
-     * @return string
-     */
-    public function json(): string
-    {
-        return json_encode(["error" => $this->getText()]);
-    }
-
-    /**
-     * Set flash Session Key
-     */
-    public function flash(): void
-    {
-        (new Session())->set("flash", $this);
-    }
-
-    /**
      * @param string $message
      * @return string
      */

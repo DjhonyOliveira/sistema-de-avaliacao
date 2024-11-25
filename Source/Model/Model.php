@@ -131,36 +131,6 @@ abstract class Model
     }
 
     /**
-     * @param string $coluns    
-     * @return Model
-     */
-    public function order(string $coluns = null): Model
-    {
-        $this->order = " order by {$coluns}";
-        return $this;
-    }
-
-    /**
-     * @param integer $limit
-     * @return Model
-     */
-    public function limit(int $limit): Model
-    {
-        $this->limit = " limit {$limit}";
-        return $this;
-    }
-
-    /**
-     * @param integer $offset
-     * @return Model
-     */
-    public function offset(int $offset): Model
-    {
-        $this->offset = " offset {$offset}";
-        return $this;
-    }
-
-    /**
      * @param bool $all
      * @return null|array|mixed|Model
      */
@@ -208,31 +178,6 @@ abstract class Model
             $stmt->execute($this->filter($data));
 
             return Connect::getInstance()->lastInsertId();
-        } catch (\PDOException $exception) {
-            $this->fail = $exception;
-            return null;
-        }
-    }
-
-    /**
-     * @param array $data
-     * @param string $terms
-     * @param string $params
-     * @return int|null
-     */
-    protected function update(array $data, string $terms, string $params): ?int
-    {
-        try {
-            $dateSet = [];
-            foreach ($data as $bind => $value) {
-                $dateSet[] = "{$bind} = :{$bind}";
-            }
-            $dateSet = implode(", ", $dateSet);
-            parse_str($params, $params);
-
-            $stmt = Connect::getInstance()->prepare("UPDATE " . static::$entity . " SET {$dateSet} WHERE {$terms}");
-            $stmt->execute($this->filter(array_merge($data, $params)));
-            return ($stmt->rowCount() ?? 1);
         } catch (\PDOException $exception) {
             $this->fail = $exception;
             return null;

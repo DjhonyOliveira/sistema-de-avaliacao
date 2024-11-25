@@ -4,6 +4,8 @@ namespace Source\Controller;
 
 use Source\Controller\Controller;
 use Source\Core\Session;
+use Source\Model\Perguntas;
+use Source\Model\Setores;
 use Source\Model\Usuario;
 
 class App extends Controller
@@ -21,11 +23,15 @@ class App extends Controller
     public function admin(): void
     {
         if(isset($_SESSION['authUser'])){
-            $idUser = $_SESSION['authUser'];
+            $idUser   = $_SESSION['authUser'];
 
            echo $this->view->render("admin", [
-                "user"      => (new Usuario())->findById("usrid", $idUser),
-                "nameAdmin" => 'Hospital Regional'
+               "nameAdmin"      => 'Hospital Regional',
+               "user"           => (new Usuario())->findById("usrid", $idUser),
+               "buscaUsuarios"  => (new Usuario())->getAllUsers(),
+               "buscaSetores"   => (new Setores())->getListaSetoresByPersistence(true),
+               "setores"        => (new Setores())->getListaSetoresByPersistence(),
+               "buscaPerguntas" => (new Perguntas())->getAllPerguntas()
            ]);
         } else {
             redirect("/login");

@@ -6,9 +6,14 @@
     <title>Avaliação de Atendimento Hospitalar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="shared/styles/avaliacao.css">
+    <link rel="stylesheet" href="shared/styles/message.css">
+    <link rel="shortcut icon" href="shared/images/cruz-vermelha.png" type="image/x-icon">
 </head>
 <body class="bg-light">
-    <div class="container mt-5">
+    <div class="container mensagem">
+        <div class="json-response"></div>
+    </div>
+    <div class="container avaliacao">
         <h1 class="text-center mb-4">Avaliação de Atendimento</h1>
         <div id="question-container" class="text-center">
             <h3 id="question">Carregando pergunta...</h3>
