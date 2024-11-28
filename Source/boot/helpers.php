@@ -143,9 +143,11 @@ function montaTable(array $aTitleColunas, array $aDados, $sParametroAcao)
         }
 
         $sTable .= '<td style="padding: 10px 15px; text-align: center; width: auto;">';
-        $sTable .= '<div class="btn-group" role="group" aria-label="Ações">';
-        $sTable .= '<button type="button" name="acao" value="excluir" data-id="'. $id .'" data-param="'. $sParametroAcao .'" class="btn btn-danger btn-sm excluir">Excluir</button>';
-        $sTable .= '</div>';
+        if($id != 1){
+            $sTable .= '<div class="btn-group" role="group" aria-label="Ações">';
+            $sTable .= '<button type="button" name="acao" value="excluir" data-id="'. $id .'" data-param="'. $sParametroAcao .'" class="btn btn-danger btn-sm excluir">Excluir</button>';
+            $sTable .= '</div>';
+        }
         $sTable .= '</td>';
 
         $sTable .= '</tr>';
